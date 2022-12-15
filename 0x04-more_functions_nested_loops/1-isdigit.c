@@ -1,9 +1,9 @@
 #include "main.h"
 
 /**
- * _isdigit - function that verifies if a character is a digit or not
- * @c: tested character
- * Return: return 1 if it is uppercase, 0 if not
+ * _isdigit - checks if parameter is an uppercase character
+ * @c: input character
+ * Return: 1 if is an uppercase character, 0 in other case
  */
 
 int _isdigit(int c)
