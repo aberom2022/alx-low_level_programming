@@ -1,71 +1,39 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <ctype.h>
-#include <string.h>
 
 /**
- * check_num - check - string there are digit
- * @str: array str
+ * main - program that adds positive numbers.
+ * @argc: number of arguments
+ * @argv: array with the arguments
  *
- * Return: Always 0 (success)
- */
-
-int check_num(char *str)
-{
-	/*Declaring variables*/
-	unsigned int count;
-
-	count = 0;
-	while (count < strlen(str)) /*Count string*/
-
-	{
-		if (!isdigit(str[count])) /*check if str the re are digit*/
-		{
-			return (0);
-		}
-
-		count++;
-	}
-	return (1);
-}
-
-/**
- * main - print the number of the program
- * @argc: Count arguments
- * @argv: Arguments
- *
- * Return: Always 0 (Success)
- */
+ * Return: always 0
+ **/
 
 int main(int argc, char *argv[])
 {
-	/*Declarimg variable*/
-	int count;
-	int str_to_int;
-	int sum = 0;
+	int i, suma = 0, res = 0;
+	char c[] = "Error", *find_letter;
 
-	count = 1;
-	while (count < argc) /*Goes througn the whole array*/
-
+	if (argc > 1)
 	{
-		if (check_num(argv[count]))
-
+		for (i = 1; i < argc; i++)
 		{
-		str_to_int = atoi(argv[count]); /*ATOI --> convert string to int*/
-		sum += str_to_int;
+			find_letter = argv[i];
+			while (*find_letter != 0)
+			{
+				if (*find_letter < 47 || *find_letter > 57)
+				{
+					printf("%s\n", c);
+					return (1);
+				}
+				find_letter++;
+			}
+			res = atoi(argv[i]);
+			suma += res;
 		}
-
-		/*Condition if one of the number contains symboles that are not digits*/
-		else
-		{
-			printf("Error\n");
-			return (1);
-		}
-
-		count++;
+		printf("%d\n", suma);
 	}
-
-	printf("%d\n", sum); /*print sum*/
-
+	else
+		printf("%d\n", 0);
 	return (0);
 }
